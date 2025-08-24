@@ -1,6 +1,7 @@
 package br.com.api.gamelist.dto;
 
 import br.com.api.gamelist.entities.Game;
+import br.com.api.gamelist.repositories.projections.GameMinProjection;
 import lombok.Getter;
 
 @Getter
@@ -18,5 +19,13 @@ public class GameMinDTO {
         this.year = game.getYear().toString();
         this.imgUrl = game.getImgUrl();
         this.shortDescription = game.getShortDescription();
+    }
+
+    public GameMinDTO(GameMinProjection projection) {
+        this.id = projection.getId();
+        this.title = projection.getTitle();
+        this.year = projection.getYear().toString();
+        this.imgUrl = projection.getImgUrl();
+        this.shortDescription = projection.getShortDescription();
     }
 }
